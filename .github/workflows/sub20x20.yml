@@ -17,6 +17,8 @@ jobs:
     name: sub20x20
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      PYTHONPATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v3
       - uses: conda-incubator/setup-miniconda@v2
