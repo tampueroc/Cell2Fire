@@ -2,10 +2,11 @@ name: test_h2 # Kotaro Yama
 # dropped the Docker container use (DLW April 2025)
 
 on:
+  workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, bitrot]
   pull_request:
-    branches: [main]
+    branches: [main, bitrot]
 
 defaults:
   run:
@@ -16,6 +17,8 @@ jobs:
     name: test_h2
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      PYTHONPATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v3
       - uses: conda-incubator/setup-miniconda@v2
